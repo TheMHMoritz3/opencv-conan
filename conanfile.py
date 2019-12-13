@@ -27,11 +27,14 @@ conan_basic_setup()''')
     def build(self):
         cmake = CMake(self)
         cmake.definitions['OPENCV_ENABLE_NONFREE'] = True
+        cmake.definitions['BUILD_opencv_python'] = False
+        cmake.definitions['BUILD_opencv_java'] = False
         cmake.definitions['OPENCV_EXTRA_MODULES_PATH'] = './opencv_contrib/modules'
         cmake.configure(source_folder="opencv")
         cmake.build()
 
         # Explicit way:
+        # -DBUILD_opencv_java=OFF -DBUILD_opencv_python=OFF
         # self.run('cmake %s/hello %s'
         #          % (self.source_folder, cmake.command_line))
         # self.run("cmake --build . %s" % cmake.build_config)
