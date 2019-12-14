@@ -51,5 +51,5 @@ conan_basic_setup()''')
         cmake.patch_config_paths()
 
     def package_info(self):
-        self.cpp_info.libdirs = ["x64\\vc16\\lib"]  # Deafult value is 'lib'
+        self.cpp_info.libdirs = ["x64/vc16/lib", "x64/vc14/lib", "x64/vc15/lib", "/lib"]
         self.cpp_info.libs = tools.collect_libs(self)
