@@ -1,5 +1,5 @@
 from conans import ConanFile, CMake, tools
-
+import os
 
 class OpencvConan(ConanFile):
     name = "opencv"
@@ -51,5 +51,8 @@ conan_basic_setup()''')
         cmake.patch_config_paths()
 
     def package_info(self):
-        self.cpp_info.libdirs = ["x64/vc16/lib", "x64/vc14/lib", "x64/vc15/lib", "/lib"]
+        if self.settings.os == 'Linux':
+            self.cpp_info.includedirs.append(os.path.join('include', 'opencv4'))
+
+        self.cpp_info.libdirs = ["x64/vc16/lib", "x64/vc14/lib", "x64/vc15/lib", "lib"]
         self.cpp_info.libs = tools.collect_libs(self)
