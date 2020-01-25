@@ -10,10 +10,15 @@ class OpencvConan(ConanFile):
     description = "<Description of Opencv here>"
     topics = ("<Put some tag here>", "<here>", "<and here>")
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False], "fPIC": [True, False], "NonFree": [True, False], "Contrib": [True, False]}
-    default_options = {"shared": True, "fPIC": True, "NonFree": True, "Contrib": True}
+    options = {"shared": [True, False], "fPIC": [True, False], "NonFree": [True, False], "Contrib": [True, False], "WithVTK": [True, False]}
+    default_options = {"shared": True, "fPIC": True, "NonFree": True, "Contrib": True, "WithVTK": False}
     generators = "cmake"
-    requires = ("eigen/3.3.7@conan/stable", "libpng/1.6.37", "libvtk/7.1.1@mhmoritz3/stable")
+    requires = ("eigen/3.3.7@conan/stable", "libpng/1.6.37")
+
+    def requirements(self):
+        if self.options.WithVTK:
+            self.requires("libvtk/7.1.1@mhmoritz3/stable")
+
 
     def source(self):
         self.run("git clone https://github.com/opencv/opencv.git")
@@ -28,18 +33,14 @@ conan_basic_setup()''')
 
     def configure_cmake(self):
         cmake = CMake(self)
-
         cmake.definitions['CMAKE_POSITION_INDEPENDENT_CODE'] = True
-
         cmake.definitions['BUILD_JAVA'] = False
-
         cmake.definitions['BUILD_opencv_java_bindings_generator'] = False
         cmake.definitions['BUILD_opencv_js'] = False
         cmake.definitions['BUILD_opencv_python2'] = False
         cmake.definitions['BUILD_opencv_python3'] = False
         cmake.definitions['BUILD_opencv_python_bindings_generator'] = False
         cmake.definitions['BUILD_opencv_python_tests'] = False
-
         cmake.definitions['OPENCV_ENABLE_NONFREE'] = self.options.NonFree
 
         if self.options.Contrib:
