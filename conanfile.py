@@ -11,6 +11,7 @@ class OpencvConan(ConanFile):
     topics = ("<Put some tag here>", "<here>", "<and here>")
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False], "NonFree": [True, False], "Contrib": [True, False], "WithVTK": [True, False]}
+    short_paths = True
     default_options = {"shared": True, "fPIC": True, "NonFree": True, "Contrib": True, "WithVTK": False}
     generators = "cmake"
     requires = ("eigen/3.3.7@conan/stable", "libpng/1.6.37")
