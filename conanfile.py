@@ -43,6 +43,7 @@ conan_basic_setup()''')
         cmake.definitions['BUILD_opencv_python_bindings_generator'] = False
         cmake.definitions['BUILD_opencv_python_tests'] = False
         cmake.definitions['OPENCV_ENABLE_NONFREE'] = self.options.NonFree
+        cmake.definitions['WITH_GTK'] = False
 
         if self.options.Contrib:
             cmake.definitions['OPENCV_EXTRA_MODULES_PATH'] = './opencv_contrib/modules'
