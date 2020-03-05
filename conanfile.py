@@ -28,14 +28,13 @@ class OpencvConan(ConanFile):
                 "libjpeg-turbo/1.5.2@bincrafters/stable",
                 "libwebp/1.0.0@bincrafters/stable",
                 "libtiff/4.0.9@bincrafters/stable",
-                "jasper/2.0.14@conan/stable",
+                "jasper/a2.0.14@themhmoritz3/stable",
                 "protobuf/3.5.2@bincrafters/stable",
                 "gflags/2.2.2@bincrafters/stable",
                 "glog/0.4.0@bincrafters/stable",
                 "bzip2/1.0.8@conan/stable")
 
     def requirements(self):
-        self.options["jasper"].jpegturbo = True
         if self.options.WithVTK:
             self.requires("libvtk/7.1.1@mhmoritz3/stable")
 
