@@ -64,4 +64,5 @@ conan_basic_setup()''')
             self.cpp_info.includedirs.append(os.path.join('include', 'opencv4'))
 
         self.cpp_info.libdirs = ["x64/vc16/lib", "x64/vc14/lib", "x64/vc15/lib", "lib"]
+        self.cpp_info.bindirs = ["x64/vc16/bin", "x64/vc14/bin", "x64/vc15/lib", "bin"]
         self.cpp_info.libs = tools.collect_libs(self)
