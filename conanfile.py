@@ -29,7 +29,7 @@ class OpencvConan(ConanFile):
                 "libwebp/1.0.0@bincrafters/stable",
                 "libtiff/4.0.9@bincrafters/stable",
                 "jasper/a2.0.14@themhmoritz3/stable",
-                "protobuf/3.5.2@bincrafters/stable",
+                "protobuf/3.5.2@themhmoritz3/stable",
                 "gflags/2.2.2@bincrafters/stable",
                 "glog/0.4.0@bincrafters/stable",
                 "bzip2/1.0.8@conan/stable")
