@@ -23,13 +23,13 @@ class OpencvConan(ConanFile):
                        "WithVTK": False}
     generators = "cmake"
     requires = ("eigen/3.3.7@conan/stable",
-                "zlib/1.2.11",
+                "zlib/1.2.11@conan/stable",
                 "libpng/1.6.37",
                 "libjpeg-turbo/1.5.2@bincrafters/stable",
                 "libwebp/1.0.0@bincrafters/stable",
                 "libtiff/4.0.9@bincrafters/stable",
                 "jasper/a2.0.14@themhmoritz3/stable",
-                "protobuf/3.5.2@themhmoritz3/stable",
+                "protobuf/3.5.2a@themhmoritz3/stable",
                 "bzip2/1.0.8@conan/stable")
 
     def requirements(self):
