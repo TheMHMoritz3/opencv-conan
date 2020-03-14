@@ -32,10 +32,13 @@ class OpencvConan(ConanFile):
                 "protobuf/3.5.2a@themhmoritz3/stable",
                 "bzip2/1.0.8@conan/stable")
 
+    def configure(self):
+        if self.settings.os == "Windows":
+            del self.options.fPIC
+
     def requirements(self):
         if self.options.WithVTK:
             self.requires("libvtk/7.1.1@mhmoritz3/stable")
-
 
     def source(self):
         tools.download("https://github.com/opencv/opencv/archive/4.2.0.zip", "opencv.zip")
