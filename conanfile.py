@@ -79,10 +79,6 @@ conan_basic_setup()''')
         cmake.definitions['BUILD_PROTOBUF'] = False
         cmake.definitions['PROTOBUF_UPDATE_FILES'] = True
         cmake.definitions['WITH_PROTOBUF'] = True
-        cmake.definitions['GFLAGS_INCLUDE_DIR_HINTS'] = ';'.join(self.deps_cpp_info['gflags'].include_paths)
-        cmake.definitions['GFLAGS_LIBRARY_DIR_HINTS'] = ';'.join(self.deps_cpp_info['gflags'].lib_paths)
-        cmake.definitions['GLOG_INCLUDE_DIR_HINTS'] = ';'.join(self.deps_cpp_info['glog'].include_paths)
-        cmake.definitions['GLOG_LIBRARY_DIR_HINTS'] = ';'.join(self.deps_cpp_info['glog'].lib_paths)
         cmake.definitions['BUILD_opencv_dnn'] = False
         cmake.definitions['BUILD_opencv_dnn_objdetect'] = False
         cmake.definitions['BUILD_opencv_dnn_superres'] = False
