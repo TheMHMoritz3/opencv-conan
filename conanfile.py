@@ -23,7 +23,7 @@ class OpencvConan(ConanFile):
                        "WithVTK": False}
     generators = "cmake"
     requires = ("eigen/3.3.7@conan/stable",
-                "zlib/1.2.11@conan/stable",
+                "zlib/1.2.11",
                 "libpng/1.6.37",
                 "libjpeg-turbo/1.5.2@bincrafters/stable",
                 "libwebp/1.0.0@bincrafters/stable",
@@ -33,7 +33,7 @@ class OpencvConan(ConanFile):
                 "bzip2/1.0.8@conan/stable")
 
     def configure(self):
-        if self.settings.os == "Windows":
+        if self.settings.os == 'Windows':
             del self.options.fPIC
 
     def requirements(self):
