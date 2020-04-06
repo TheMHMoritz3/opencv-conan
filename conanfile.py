@@ -153,7 +153,7 @@ class OpenCVConan(ConanFile):
             else:
                 self.requires.add('libjpeg/9c')
         if self.options.tiff:
-            self.requires.add('libtiff/4.0.9')
+            self.requires.add('libtiff/4.0.9@themhmoritz3/stable')
         if self.options.webp:
             self.requires.add('libwebp/1.0.3')
         if self.options.png:
@@ -202,6 +202,7 @@ class OpenCVConan(ConanFile):
         cmake = CMake(self)
 
         # General configuration
+        cmake.definitions['CMAKE_CXX_STANDARD'] = "1"
         cmake.definitions['OPENCV_CONFIG_INSTALL_PATH'] = "cmake"
         cmake.definitions['OPENCV_BIN_INSTALL_PATH'] = "bin"
         cmake.definitions['OPENCV_LIB_INSTALL_PATH'] = "lib"
@@ -225,16 +226,16 @@ class OpenCVConan(ConanFile):
 
         # Disable modules and options that are not compatible with Emscripten
         if self.settings.os == 'Emscripten':
-            cmake.definitions['BUILD_opencv_videoio'] = False
+            cmake.definitions['BUILD_opencv_videoio'] = True
             cmake.definitions['WITH_OPENCL'] = False
             cmake.definitions['WITH_OPENCLAMDBLAS'] = False
             cmake.definitions['WITH_OPENCLAMDFFT'] = False
             cmake.definitions['WITH_PTHREADS_PF'] = False
             cmake.definitions['WITH_V4L'] = False
             cmake.definitions['WITH_GTK'] = False
-            cmake.definitions['WITH_IMGCODEC_HDR'] = False
-            cmake.definitions['WITH_IMGCODEC_PFM'] = False
-            cmake.definitions['WITH_IMGCODEC_PXM'] = False
+            cmake.definitions['WITH_IMGCODEC_HDR'] = True
+            cmake.definitions['WITH_IMGCODEC_PFM'] = True
+            cmake.definitions['WITH_IMGCODEC_PXM'] = True
             cmake.definitions['WITH_IMGCODEC_SUNRASTER'] = False
 
         # We are building C++ only. Disable other languages
