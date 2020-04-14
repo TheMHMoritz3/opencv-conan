@@ -47,7 +47,7 @@ class OpenCVConan(ConanFile):
                        "contrib": True,
                        "jpeg": True,
                        "jpegturbo": False,
-                       "tiff": True,
+                       "tiff": False,
                        "webp": True,
                        "png": True,
                        "jasper": True,
