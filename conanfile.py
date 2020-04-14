@@ -58,7 +58,7 @@ class OpenCVConan(ConanFile):
                        "carotene": False,
                        "cuda": False,
                        "protobuf": True,
-                       "freetype": True,
+                       "freetype": False,
                        "harfbuzz": True,
                        "eigen": True,
                        "glog": True,
