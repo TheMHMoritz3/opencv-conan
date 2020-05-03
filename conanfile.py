@@ -58,7 +58,7 @@ class OpenCVConan(ConanFile):
                        "carotene": False,
                        "cuda": False,
                        "protobuf": True,
-                       "freetype": True,
+                       "freetype": False,
                        "harfbuzz": True,
                        "eigen": True,
                        "glog": True,
@@ -75,6 +75,7 @@ class OpenCVConan(ConanFile):
     short_paths = True
     _source_subfolder = "source_subfolder"
     _build_subfolder = "build_subfolder"
+    requires = "bzip2/1.0.8"
 
     def configure(self):
         compiler_version = Version(self.settings.compiler.version.value)
