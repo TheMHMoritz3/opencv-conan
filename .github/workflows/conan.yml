@@ -59,8 +59,8 @@ jobs:
       fail-fast: false
       matrix:
         compiler:
-        - { name: "GCC", version: "4.9", buildType: "Debug"     }
-        - { name: "GCC", version: "4.9", buildType: "Release"   }
+#        - { name: "GCC", version: "4.9", buildType: "Debug"     }
+#        - { name: "GCC", version: "4.9", buildType: "Release"   }
         - { name: "GCC", version: "5", buildType: "Debug"       }
         - { name: "GCC", version: "5", buildType: "Release"     }
         - { name: "GCC", version: "6", buildType: "Debug"       }

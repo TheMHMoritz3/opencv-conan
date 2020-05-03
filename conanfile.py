@@ -47,7 +47,7 @@ class OpenCVConan(ConanFile):
                        "contrib": True,
                        "jpeg": True,
                        "jpegturbo": False,
-                       "tiff": True,
+                       "tiff": False,
                        "webp": True,
                        "png": True,
                        "jasper": True,
@@ -57,8 +57,8 @@ class OpenCVConan(ConanFile):
                        "dc1394": True,
                        "carotene": False,
                        "cuda": False,
-                       "protobuf": True,
-                       "freetype": True,
+                       "protobuf": False,
+                       "freetype": False,
                        "harfbuzz": True,
                        "eigen": True,
                        "glog": True,
@@ -75,6 +75,7 @@ class OpenCVConan(ConanFile):
     short_paths = True
     _source_subfolder = "source_subfolder"
     _build_subfolder = "build_subfolder"
+    requires = "bzip2/1.0.8"
 
     def configure(self):
         compiler_version = Version(self.settings.compiler.version.value)
@@ -151,13 +152,13 @@ class OpenCVConan(ConanFile):
             if self.options.jpegturbo:
                 self.requires.add('libjpeg-turbo/1.5.2')
             else:
-                self.requires.add('libjpeg/9c')
+                self.requires.add('libjpeg/9d')
         if self.options.tiff:
             self.requires.add('libtiff/4.0.9@themhmoritz3/stable')
         if self.options.webp:
             self.requires.add('libwebp/1.0.3')
         if self.options.png:
-            self.requires.add('libpng/1.6.37')
+            self.requires.add('libpng/1.6.37@bincrafters/stable')
         if self.options.jasper:
             self.requires.add('jasper/2.0.14')
             self.options["jasper"].jpegturbo = self.options.jpegturbo
@@ -181,9 +182,9 @@ class OpenCVConan(ConanFile):
             self.requires.add('lapack/3.7.1@conan/stable')
         if self.options.contrib:
             if self.options.freetype:
-                self.requires.add('freetype/2.10.0')
+                self.requires.add('freetype/2.9.1@bincrafters/stable')
             if self.options.harfbuzz:
-                self.requires.add('harfbuzz/2.4.0@bincrafters/stable')
+                self.requires.add('harfbuzz/2.6.4@bincrafters/stable')
             if self.options.glog:
                 self.requires.add('glog/0.4.0')
             if self.options.gflags:
